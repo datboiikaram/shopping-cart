@@ -1,0 +1,528 @@
+/* -------------------------------- CSS RESET ------------------------------- */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* ------------------------------- Page Style ------------------------------- */
+:root {
+  --light-bg: #eff2fa;
+  --color-white: white;
+  --color-light-purple: #6974c8;
+  --dark-bg: #161e3e;
+  --color-dark-blue: #09112a;
+  --color-red: #ff2d2d;
+  --color-gray: #525252;
+  --color-black: #3e3e3e;
+  --transition-timing: 0.3s;
+  --color-blue: #064267;
+  --box-shadow: rgba(0, 0, 0, 0.2);
+  --color-light-gray: #f5f5f5;
+  --color-text: var(--color-black);
+  --color-bg: var(--color-light-gray);
+  --color-input: var(--color-white);
+  --color-link: var(--color-blue);
+  --color-task-hover: #ececec;
+  --color-bg-dark-theme: #222222;
+  --color-input-dark-theme: #333333;
+  --color-text-dark-theme: var(--color-light-gray);
+  --color-black: #3e3e3e;
+  --color-red: #ff2d2d;
+  --color-blue: #064267;
+  --color-white: white;
+  --color-gray: #525252;
+  --color-light-gray: #f1f3f5;
+  --color-text: var(--color-black);
+  --color-bg: var(--color-light-gray);
+  --color-input: var(--color-white);
+  --color-link: var(--color-blue);
+  --color-task-hover: #ececec;
+  --color-bg-dark-theme: #222222;
+  --color-input-dark-theme: #333333;
+  --color-text-dark-theme: var(--color-light-gray);
+}
+
+body {
+  font-family: "poppins";
+  transition: var(--transition-timing);
+}
+
+.header__theme__icon {
+  scale: 1/1;
+  width: 30px;
+}
+
+.light-mode,
+.dark-mode {
+  opacity: 0.6;
+}
+
+.light-icon,
+.dark-icon {
+  transition: 0.5s;
+}
+.light-icon path,
+.dark-icon path {
+  fill: var(--color-gray);
+}
+
+.light-icon {
+  transform: scale(0);
+}
+
+.no-image {
+  opacity: 0.5;
+  scale: 1/1;
+  width: 150px;
+}
+
+.checkmark {
+  scale: 1/1;
+  width: 30px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  gap: 15px;
+  transition: var(--transition-timing);
+}
+.container--isDark {
+  --color-bg: var(--color-bg-dark-theme);
+  --color-input: var(--color-input-dark-theme);
+  --color-text: var(--color-text-dark-theme);
+  --color-task-hover: var(--color-input-dark-theme);
+  --color-link: #3cb6ff;
+  --color-gray: #adadad;
+}
+.container--isDark .light-icon {
+  transform: scale(1);
+}
+.container--isDark .dark-icon {
+  transform: scale(0);
+}
+.container--isDark body {
+  background-color: var(--dark-bg);
+}
+
+.header {
+  width: 98%;
+  margin-top: 7px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  transition: var(--transition-timing);
+  background-color: var(--color-bg);
+  border-radius: 10px;
+}
+.header__theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header .shopping-cart {
+  opacity: 0.6;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: var(--transition-timing);
+}
+.header .shopping-cart path {
+  fill: var(--color-gray);
+}
+.header .shopping-cart:active {
+  scale: 0.8;
+}
+
+.main {
+  width: 98%;
+  display: flex;
+  gap: 1%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  justify-content: flex-start;
+}
+.main__nav {
+  width: 25%;
+  height: 579px;
+  background-color: var(--color-input);
+  align-self: self-start;
+  border-radius: 10px;
+}
+.main__products {
+  background-color: var(--color-bg);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  transition: var(--transition-timing);
+}
+
+.product {
+  background-color: var(--color-input);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px;
+  gap: 20px;
+  color: var(--color-gray);
+}
+.product__img {
+  padding: 20px;
+  background-color: var(--color-bg);
+  border-radius: 10px;
+}
+.product__content {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.product__info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product__name {
+  font-size: 21px;
+  font-weight: 500;
+}
+.product__price {
+  font-weight: 500;
+}
+.product__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "comfortaa";
+  font-weight: bold;
+  width: 100%;
+  border-radius: 50px;
+  padding: 5px;
+  transition: var(--transition-timing);
+  cursor: pointer;
+}
+.product__button:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+.product__button .added {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-timing);
+}
+.product__button:active .add {
+  scale: 0.7;
+  transition: var(--transition-timing);
+}
+.product__button--isAdded {
+  background-color: #28a745;
+  color: white;
+}
+.product__button--isAdded:hover {
+  background-color: #20c045;
+}
+.product__button--isAdded .add {
+  display: none;
+}
+.product__button--isAdded .added {
+  display: flex;
+}
+
+/* ---------------------------------- Cart ---------------------------------- */
+.left-arrow-icon,
+.right-arrow-icon {
+  scale: 1/1;
+  width: 17px;
+}
+
+.cart {
+  font-family: "poppins";
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 16px var(--box-shadow);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%) scale(0);
+  transition: var(--transition-timing);
+  pointer-events: all;
+}
+.cart--isActive {
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+.cart__close-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  border-bottom: 1px solid var(--color-gray);
+  padding-bottom: 5px;
+}
+.cart__close-button span {
+  color: var(--color-gray);
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.cart__close-button svg {
+  cursor: pointer;
+}
+.cart__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.cart__heading {
+  display: flex;
+  flex-direction: column;
+}
+.cart__title {
+  color: var(--color-gray);
+  font-size: 18px;
+  font-weight: bold;
+}
+.cart__items {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+.cart__products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  transition: var(--transition-timing);
+  height: 245px;
+  overflow-y: scroll;
+  gap: 10px;
+}
+.cart__product {
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 5px 20px;
+  padding-left: 8px;
+  background-color: var(--color-bg);
+  color: var(--color-gray);
+}
+.cart__product:hover {
+  background-color: var(--color-input);
+}
+.cart__product__img {
+  padding: 5px;
+  border-radius: 7px;
+  background-color: var(--light-bg);
+}
+.cart__product-image {
+  width: 45px;
+}
+.cart__product__price {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+}
+.cart__product__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.cart__product__counter {
+  background-color: var(--light-bg);
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 45px;
+}
+.cart__product__amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+.cart__delete-icon {
+  transition: var(--transition-timing);
+  cursor: pointer;
+  width: 25px;
+}
+.cart__delete-icon path {
+  transition: var(--transition-timing);
+  fill: var(--color-gray);
+}
+.cart__delete-icon:hover path {
+  fill: var(--color-red);
+}
+.cart__info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 96%;
+  padding: 15px 60px;
+  padding-right: 30px;
+  border-radius: 7px;
+  color: var(--color-gray);
+  font-family: "comfortaa";
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--color-bg);
+  border: none;
+  transition: var(--transition-timing);
+  cursor: pointer;
+}
+.checkout__button:hover {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+.checkout__button:hover .left-arrow-icon path {
+  fill: var(--color-white);
+}
+.checkout__pay {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-weight: bold;
+}
+
+.left-arrow-icon path,
+.right-arrow-icon path {
+  fill: var(--color-gray);
+  transition: var(--transition-timing);
+}
+
+.container.cart--isActive {
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-box-icon {
+  opacity: 0.6;
+  scale: 1/1;
+  width: 250px;
+}
+
+.empty-cart-phrase {
+  color: var(--color-gray);
+}
+
+.container:has(.cart--isActive) {
+  pointer-events: none;
+}/*# sourceMappingURL=style.css.map */
